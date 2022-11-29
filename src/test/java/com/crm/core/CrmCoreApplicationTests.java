@@ -2,6 +2,9 @@ package com.crm.core;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.assertj.core.api.AssertDelegateTarget;
@@ -160,9 +163,15 @@ class CrmCoreApplicationTests {
 	public void getClientsThenCantFindExistingNonClientExpectOK() {
 	}
 	
-	@Disabled("To be implemented")
 	@Test
 	public void saveContactExpectOK() {
+		Opportunity existingOpportunity = new Opportunity(1, "Juan", false, null);
+		opportunityService.saveOpportunity(existingOpportunity);
+		
+		Date date = new GregorianCalendar(2023,11,31).getTime();
+		Contact expectedContact = contactService.saveContact(new Contact("Descuento 20%", "phone",date, existingOpportunity));
+		
+		assertEquals(expectedContact.getTitle(), "Descuento 20%");
 	}
 
 	@Disabled("To be implemented")
