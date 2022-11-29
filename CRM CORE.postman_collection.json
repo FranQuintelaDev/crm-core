@@ -48,6 +48,36 @@
 			"response": []
 		},
 		{
+			"name": "POST opportunities",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Juan\",\r\n    \"isClient\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/opportunities",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"opportunities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "GET opportunities ID",
 			"request": {
 				"method": "GET",
@@ -64,6 +94,61 @@
 						"v1",
 						"opportunities",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET opportunities ID contacts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/opportunities/3/contacts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"opportunities",
+						"3",
+						"contacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST opportunities ID contacts",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Email list\",\r\n    \"type\": \"email\",\r\n    \"opportunity\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/opportunities/3/contacts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"opportunities",
+						"3",
+						"contacts"
 					]
 				}
 			},
