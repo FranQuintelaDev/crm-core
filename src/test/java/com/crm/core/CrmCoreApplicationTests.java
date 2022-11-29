@@ -114,9 +114,16 @@ class CrmCoreApplicationTests {
 	public void getOpportunityWithNonExistingOpExpectKO() {
 	}
 	
-	@Disabled("To be implemented")
 	@Test
-	public void markAsClientOKExpectOK() {
+	public void markAsClientExpectOK() {
+		Opportunity existingOpportunity = opportunityService.saveOpportunity(new Opportunity(1, "Juan", false, null));
+		
+		existingOpportunity.setClient(true);
+		existingOpportunity.setIsClientReason("Ha comprado un coche");
+		Opportunity expectedOpportunity = opportunityService.updateOpportunity(existingOpportunity);
+		
+		assertEquals(expectedOpportunity.getId(), existingOpportunity.getId());
+
 	}
 	
 	@Disabled("To be implemented")
