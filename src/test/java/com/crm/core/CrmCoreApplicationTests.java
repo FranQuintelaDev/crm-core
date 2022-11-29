@@ -28,11 +28,10 @@ class CrmCoreApplicationTests {
 	void contextLoads() {
 	}
 
-	@Disabled("To be implemented")
 	@Test
 	public void signUpOKExpectOK() {
-		User expectedUser = new User(1, "Ford employee", "samplepass");
-		User actualUser = userService.authUser(expectedUser);
+		User expectedUser = new User(4, "Ford boss", "samplepass");
+		User actualUser = userService.signUp(expectedUser);
 		assertEquals(expectedUser.getId(), actualUser.getId());
 	}
 	
@@ -46,9 +45,11 @@ class CrmCoreApplicationTests {
 	public void signUpInvalidDataExpectKO() {
 	}
 	
-	@Disabled("To be implemented")
 	@Test
 	public void loginOKExpectOK() {
+		User expectedUser = new User(1, "Ford employee", "samplepass");
+		User actualUser = userService.logIn(expectedUser);
+		assertEquals(expectedUser.getId(), actualUser.getId());
 	}
 	
 	@Disabled("To be implemented")

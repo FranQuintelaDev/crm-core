@@ -35,7 +35,11 @@ public class UserService {
        return repository.update(user);
     }
     
-    public User authUser(User user) {
+    public User signUp(User user) {
+		return repository.save(user);
+    }
+    
+    public User logIn(User user) {
     	User search = repository.search(user.getUsername()).stream().filter(x -> x.getPassword().equals(user.getPassword())).findFirst().get();
 		return search;
     }
