@@ -10,40 +10,45 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.crm.core.model.Product;
-import com.crm.core.service.ProductService;
+import com.crm.core.model.User;
+import com.crm.core.service.UserService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/products")
-public class ProductController {
+@RequestMapping("/api/v1/users")
+public class UserController {
 
     @Autowired
-    private ProductService service;
+    private UserService service;
 
     @PostMapping
-    public Product addProduct(@RequestBody Product product) {
-        return service.saveProduct(product);
+    public User addUser(@RequestBody User user) {
+        return service.saveUser(user);
     }
 
     @GetMapping
-    public List<Product> findAllProducts() {
-        return service.getProducts();
+    public List<User> findAllUsers() {
+        return service.getUsers();
     }
 
     @GetMapping("{id}")
-    public Product findProductById(@PathVariable int id) {
-        return service.getProductById(id);
+    public User findUserById(@PathVariable int id) {
+        return service.getUserById(id);
     }
 
     @PutMapping
-    public Product updateProduct(@RequestBody Product product) {
-        return service.updateProduct(product);
+    public User updateUser(@RequestBody User user) {
+        return service.updateUser(user);
     }
 
     @DeleteMapping("{id}")
-    public String deleteProduct(@PathVariable int id) {
-        return service.deleteProduct(id);
+    public String deleteUser(@PathVariable int id) {
+        return service.deleteUser(id);
+    }
+    
+    @PostMapping("/auth")
+    public User authUser(@RequestBody User user) {
+        return service.authUser(user);
     }
 }

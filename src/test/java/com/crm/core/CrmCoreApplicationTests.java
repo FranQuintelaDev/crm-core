@@ -8,15 +8,16 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.crm.core.model.Product;
-import com.crm.core.repository.ProductRepository;
-import com.crm.core.service.ProductService;
+import com.crm.core.model.User;
+import com.crm.core.service.UserService;
 
 @SpringBootTest
 class CrmCoreApplicationTests {
 
+
 	@Autowired
-	private ProductService productService;
+	private UserService userService;
+	
 
 	@BeforeEach
 	void setUp() {
@@ -27,17 +28,12 @@ class CrmCoreApplicationTests {
 	void contextLoads() {
 	}
 
-	@Disabled("Sample test")
-	@Test
-	public void saveProductOKExpectsOK() {
-		Product expectedProduct = new Product(1, "product 1", 10, 10.0);
-		Product actualProduct = productService.saveProduct(expectedProduct);
-		assertEquals(expectedProduct.getId(), actualProduct.getId());
-	}
-
 	@Disabled("To be implemented")
 	@Test
 	public void signUpOKExpectOK() {
+		User expectedUser = new User(1, "Ford employee", "samplepass");
+		User actualUser = userService.authUser(expectedUser);
+		assertEquals(expectedUser.getId(), actualUser.getId());
 	}
 	
 	@Disabled("To be implemented")
