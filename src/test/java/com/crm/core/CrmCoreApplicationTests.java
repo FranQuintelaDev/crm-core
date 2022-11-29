@@ -11,8 +11,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.crm.core.model.Contact;
 import com.crm.core.model.Opportunity;
 import com.crm.core.model.User;
+import com.crm.core.service.ContactService;
 import com.crm.core.service.OpportunityService;
 import com.crm.core.service.UserService;
 
@@ -24,6 +26,8 @@ class CrmCoreApplicationTests {
 	private UserService userService;
 	@Autowired
 	private OpportunityService opportunityService;
+	@Autowired
+	private ContactService contactService;
 
 	@BeforeEach
 	void setUp() {
@@ -104,9 +108,19 @@ class CrmCoreApplicationTests {
 		assertEquals(expectedOpportunity.getId(), actualOpportunity.getId());
 	}
 	
-	@Disabled("To be implemented")
 	@Test
 	public void getOpportunityWithContactsExpectOK() {
+		Opportunity existingOpportunity = new Opportunity(1, "Juan", false, null);
+		opportunityService.saveOpportunity(existingOpportunity);
+		
+		Contact existingContact = new Contact("Mail list", "email",null, existingOpportunity);
+		contactService.saveContact(existingContact);
+		
+		//TODO CAMBIAR CUANDO SE HAGA UN GET OPPORTUNITY EAGER
+		List<Contact> contacts = contactService.getContactsByOpportunityId(existingOpportunity.getId());
+		boolean containsContact = contacts.stream().anyMatch(x -> x.getTitle().equals(existingContact.getTitle()));
+		assertEquals(true, containsContact);
+		
 	}
 	
 	@Disabled("To be implemented")
