@@ -100,6 +100,37 @@
 			"response": []
 		},
 		{
+			"name": "PUT opportunities ID",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Juan\",\r\n    \"isClientReason\": \"Ha comprado un coche\",\r\n    \"client\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/opportunities/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"opportunities",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "GET opportunities ID contacts",
 			"request": {
 				"method": "GET",
