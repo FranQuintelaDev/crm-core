@@ -2,6 +2,8 @@ package com.crm.core;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.List;
+
 import org.assertj.core.api.AssertDelegateTarget;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -9,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.crm.core.model.Opportunity;
 import com.crm.core.model.User;
 import com.crm.core.service.OpportunityService;
 import com.crm.core.service.UserService;
@@ -72,7 +75,9 @@ class CrmCoreApplicationTests {
 	
 	@Test
 	public void getOpportunitiesThenFindExistingOpExpectOK() {
-		assertEquals(true, opportunityService.getOpportunities().stream().anyMatch(x -> x.getName().equals("Juan")));
+		List<Opportunity> opportunities = opportunityService.getOpportunities();
+		boolean containsOpportunity = opportunities.stream().anyMatch(x -> x.getName().equals("Juan"));
+		assertEquals(true, containsOpportunity);
 	}
 	
 	@Disabled("To be implemented")
