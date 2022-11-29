@@ -18,6 +18,7 @@ class CrmCoreApplicationTests {
 	@Autowired
 	private UserService userService;
 	
+
 	@BeforeEach
 	void setUp() {
 	}
