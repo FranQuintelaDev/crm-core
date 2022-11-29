@@ -19,20 +19,20 @@ public class OpportunityService {
     }
 
     public List<Opportunity> getOpportunities() {
-        return repository.getAllOpportunities();
+        return repository.findAll();
     }
 
-    public Opportunity getOpportunityById(int id) {
-        return repository.findById(id);
+    public Opportunity getOpportunityById(long id) {
+        return repository.findById(id).get();
     }
 
-    public String deleteOpportunity(int id) {
-        repository.delete(id);
+    public String deleteOpportunity(long id) {
+        repository.deleteById(id);
         return "opportunity removed !! " + id;
     }
 
     public Opportunity updateOpportunity(Opportunity opportunity) {
-       return repository.update(opportunity);
+       return repository.save(opportunity);
     }
     
   
