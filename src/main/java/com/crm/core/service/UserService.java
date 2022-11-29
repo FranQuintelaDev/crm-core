@@ -19,20 +19,20 @@ public class UserService {
     }
 
     public List<User> getUsers() {
-        return repository.getAllUsers();
+        return repository.findAll();
     }
 
-    public User getUserById(int id) {
-        return repository.findById(id);
+    public User getUserById(long id) {
+        return repository.findById(id).get();
     }
 
-    public String deleteUser(int id) {
-        repository.delete(id);
+    public String deleteUser(long id) {
+        repository.deleteById(id);
         return "user removed !! " + id;
     }
 
     public User updateUser(User user) {
-       return repository.update(user);
+       return repository.save(user);
     }
     
     public User signUp(User user) {
@@ -40,7 +40,6 @@ public class UserService {
     }
     
     public User logIn(User user) {
-    	User search = repository.search(user.getUsername()).stream().filter(x -> x.getPassword().equals(user.getPassword())).findFirst().get();
-		return search;
+		return repository.findTop1ByUsernameAndPassword(user.getUsername(), user.getPassword());
     }
 }

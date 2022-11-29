@@ -36,9 +36,9 @@ class CrmCoreApplicationTests {
 
 	@Test
 	public void signUpOKExpectOK() {
-		User expectedUser = new User(4, "Ford boss", "samplepass");
+		User expectedUser = new User("Ford boss", "samplepass");
 		User actualUser = userService.signUp(expectedUser);
-		assertEquals(expectedUser.getId(), actualUser.getId());
+		assertEquals(expectedUser.getUsername(), actualUser.getUsername());
 	}
 	
 	@Disabled("To be implemented")
@@ -54,6 +54,8 @@ class CrmCoreApplicationTests {
 	@Test
 	public void loginOKExpectOK() {
 		User expectedUser = new User(1, "Ford employee", "samplepass");
+		userService.saveUser(expectedUser);
+		
 		User actualUser = userService.logIn(expectedUser);
 		assertEquals(expectedUser.getId(), actualUser.getId());
 	}
@@ -75,6 +77,9 @@ class CrmCoreApplicationTests {
 	
 	@Test
 	public void getOpportunitiesThenFindExistingOpExpectOK() {
+		Opportunity expectedOpportunity = new Opportunity(1, "Juan", false, null);
+		opportunityService.saveOpportunity(expectedOpportunity);
+		
 		List<Opportunity> opportunities = opportunityService.getOpportunities();
 		boolean containsOpportunity = opportunities.stream().anyMatch(x -> x.getName().equals("Juan"));
 		assertEquals(true, containsOpportunity);
@@ -93,6 +98,8 @@ class CrmCoreApplicationTests {
 	@Test
 	public void getOpportunityExpectOK() {
 		Opportunity expectedOpportunity = new Opportunity(1, "Juan", false, null);
+		opportunityService.saveOpportunity(expectedOpportunity);
+		
 		Opportunity actualOpportunity = opportunityService.getOpportunityById(1);
 		assertEquals(expectedOpportunity.getId(), actualOpportunity.getId());
 	}
