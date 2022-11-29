@@ -48,13 +48,35 @@
 			"response": []
 		},
 		{
+			"name": "GET opportunities clients",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/opportunities/clients",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"opportunities",
+						"clients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "POST opportunities",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Juan\",\r\n    \"isClient\": false\r\n}",
+					"raw": "{\r\n    \"name\": \"Antonio\",\r\n    \"client\": true,\r\n    \"isClientReason\": \"Ha comprado una moto\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

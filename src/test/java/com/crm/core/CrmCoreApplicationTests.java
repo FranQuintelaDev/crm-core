@@ -145,9 +145,14 @@ class CrmCoreApplicationTests {
 	public void markAsClientWithInvalidDataExpectKO() {
 	}
 	
-	@Disabled("To be implemented")
 	@Test
 	public void getClientsThenFindExistingClExpectOK() {
+		Opportunity existingOpportunity = opportunityService.saveOpportunity(new Opportunity(1, "Antonio", true, "Ha comprado un coche"));
+		
+		List<Opportunity> opportunitiesAsClients = opportunityService.getOpportunitiesAsClients();
+		boolean containsOpportunityAsClient = opportunitiesAsClients.stream().anyMatch(x -> x.getName().equals(existingOpportunity.getName()));
+		assertEquals(true, containsOpportunityAsClient);
+		
 	}
 	
 	@Disabled("To be implemented")
