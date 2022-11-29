@@ -16,39 +16,45 @@ import com.crm.core.service.UserService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/users")
+@RequestMapping
 public class UserController {
 
     @Autowired
     private UserService service;
 
-    @PostMapping
+    @PostMapping("/api/v1/users")
     public User addUser(@RequestBody User user) {
         return service.saveUser(user);
     }
 
-    @GetMapping
+    @GetMapping("/api/v1/users")
     public List<User> findAllUsers() {
         return service.getUsers();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/api/v1/users/{id}")
     public User findUserById(@PathVariable int id) {
         return service.getUserById(id);
     }
 
-    @PutMapping
+    @PutMapping("/api/v1/users/{id}")
     public User updateUser(@RequestBody User user) {
         return service.updateUser(user);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/api/v1/users/{id}")
     public String deleteUser(@PathVariable int id) {
         return service.deleteUser(id);
     }
     
-    @PostMapping("/auth")
-    public User authUser(@RequestBody User user) {
-        return service.authUser(user);
+    @PostMapping("/api/v1/auth/signUp")
+    public User signUp(@RequestBody User user) {
+        return service.signUp(user);
     }
+    
+    @PostMapping("/api/v1/auth/logIn")
+    public User logIn(@RequestBody User user) {
+        return service.logIn(user);
+    }
+    
 }
