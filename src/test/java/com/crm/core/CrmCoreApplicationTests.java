@@ -2,6 +2,7 @@ package com.crm.core;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.assertj.core.api.AssertDelegateTarget;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.crm.core.model.User;
+import com.crm.core.service.OpportunityService;
 import com.crm.core.service.UserService;
 
 @SpringBootTest
@@ -17,7 +19,8 @@ class CrmCoreApplicationTests {
 
 	@Autowired
 	private UserService userService;
-	
+	@Autowired
+	private OpportunityService opportunityService;
 
 	@BeforeEach
 	void setUp() {
@@ -67,9 +70,9 @@ class CrmCoreApplicationTests {
 	public void loginInvalidDataExpectKO() {
 	}
 	
-	@Disabled("To be implemented")
 	@Test
 	public void getOpportunitiesThenFindExistingOpExpectOK() {
+		assertEquals(true, opportunityService.getOpportunities().stream().anyMatch(x -> x.getName().equals("Juan")));
 	}
 	
 	@Disabled("To be implemented")

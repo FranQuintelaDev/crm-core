@@ -6,27 +6,6 @@
 	},
 	"item": [
 		{
-			"name": "GET",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/v1/products",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"v1",
-						"products"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "GET users",
 			"request": {
 				"method": "GET",
@@ -48,21 +27,12 @@
 			"response": []
 		},
 		{
-			"name": "GET",
+			"name": "GET opportunities",
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"product 1\",\r\n    \"quantity\": 10,\r\n    \"price\": 1000\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
-					"raw": "http://localhost:8080/api/v1/products",
+					"raw": "http://localhost:8080/api/v1/opportunities",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -71,14 +41,44 @@
 					"path": [
 						"api",
 						"v1",
-						"products"
+						"opportunities"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "GET users auth",
+			"name": "POST users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"username\": \"Ford boss\",\r\n    \"password\": \"samplepass\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET auth logIn",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -92,7 +92,69 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/v1/users/auth",
+					"raw": "http://localhost:8080/api/v1/auth/logIn",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"logIn"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET auth signUp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Ford boss\",\r\n    \"password\": \"samplepass\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/auth/signUp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"signUp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT users ID",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"username\": \"Ford boss\",\r\n    \"password\": \"samplepass\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/users/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -102,44 +164,14 @@
 						"api",
 						"v1",
 						"users",
-						"auth"
+						"1"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "PUT",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"product 1\",\r\n    \"quantity\": 9,\r\n    \"price\": 1000\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/api/v1/products",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"v1",
-						"products"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET ID",
+			"name": "GET users ID",
 			"request": {
 				"method": "GET",
 				"header": [],
