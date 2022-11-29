@@ -13,4 +13,6 @@ import java.util.stream.Collectors;
 
 public interface OpportunityRepository extends JpaRepository<Opportunity, Long> {
 
+	List<Opportunity> findByIsClient(boolean isClient);
+
 }

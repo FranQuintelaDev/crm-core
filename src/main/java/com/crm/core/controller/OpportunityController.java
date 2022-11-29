@@ -30,7 +30,7 @@ public class OpportunityController {
     }
 
     @GetMapping("/api/v1/opportunities")
-    public List<Opportunity> findAllOpportunitys() {
+    public List<Opportunity> findAllOpportunities() {
         return service.getOpportunities();
     }
 
@@ -49,5 +49,9 @@ public class OpportunityController {
         return service.deleteOpportunity(id);
     }
     
+    @GetMapping("/api/v1/opportunities/clients")
+    public List<Opportunity> findAllClients() {
+        return service.getOpportunitiesAsClients();
+    }
     
 }

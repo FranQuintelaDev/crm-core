@@ -35,5 +35,7 @@ public class OpportunityService {
        return repository.save(opportunity);
     }
     
-  
+    public List<Opportunity> getOpportunitiesAsClients() {
+        return repository.findByIsClient(true);
+    }
 }
