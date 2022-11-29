@@ -90,9 +90,11 @@ class CrmCoreApplicationTests {
 	public void getOpportunitiesThenCantFindExistingClientExpectOK() {
 	}
 	
-	@Disabled("To be implemented")
 	@Test
 	public void getOpportunityExpectOK() {
+		Opportunity expectedOpportunity = new Opportunity(1, "Juan", false, null);
+		Opportunity actualOpportunity = opportunityService.getOpportunityById(1);
+		assertEquals(expectedOpportunity.getId(), actualOpportunity.getId());
 	}
 	
 	@Disabled("To be implemented")
