@@ -16,7 +16,7 @@ import com.crm.core.service.UserService;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping
 public class UserController {
