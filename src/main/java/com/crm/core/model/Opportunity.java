@@ -73,6 +73,11 @@ public class Opportunity {
 	public Opportunity() {
 		super();
 	}
+	public Opportunity(String name, boolean isClient, String isClientReason) {
+		this.name = name;
+		this.isClient = isClient;
+		this.isClientReason = isClientReason;
+	}
     
 	
     
