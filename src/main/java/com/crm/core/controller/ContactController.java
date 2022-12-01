@@ -33,12 +33,13 @@ public class ContactController {
 	private OpportunityService opportunityService;
 
 	@PostMapping("/api/v1/opportunities/{opportunityId}/contacts")
-	public Contact addContact(@PathVariable long opportunityId, @RequestBody Contact contact) {
+	public List<Contact> addContact(@PathVariable long opportunityId, @RequestBody Contact contact) {
 		
 		Opportunity opportunity = opportunityService.getOpportunityById(opportunityId);
 		contact.setOpportunity(opportunity);		
-			
-		return service.saveContact(contact);
+		service.saveContact(contact);
+		service.flush();
+		return service.getContactsByOpportunityId(opportunityId);
 		
 	}
 

@@ -18,7 +18,7 @@ public class ContactService {
         return repository.save(contact);
     }
 
-    public List<Contact> getOpportunities() {
+    public List<Contact> getContacts() {
         return repository.findAll();
     }
 
@@ -39,5 +39,8 @@ public class ContactService {
 		return repository.findByOpportunityId(opportunityId);
 	}
     
+	public void flush() {
+		repository.flush();
+	}
   
 }
